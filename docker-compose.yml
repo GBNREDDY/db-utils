@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  # Web App server
+  web:
+    build: .
+    links:
+      - mongo
+      - mysql
+    ports:
+      - "5000:5000"
+  # Redis server
+  redis:
+    image: redis
+  # Mysql DB server
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'my_db'
+      MYSQL_USER: 'toor'
+      MYSQL_PASSWORD: 'toor'
+      MYSQL_ROOT_PASSWORD: 'toor'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_vol:/var/lib/mysql
+    expose:
+      - '3306'
+  # Mongo DB server
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=toor
+      - MONGO_INITDB_ROOT_PASSWORD=toor
+      - MONGO_INITDB_DATABASE=mydb
+    volumes:
+      - mongo_vol:/var/lib/mongo
+# DB volumes
+volumes:
+    mysql_vol:
+    mongo_vol:

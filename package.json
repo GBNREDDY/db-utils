@@ -1,0 +1,16 @@
+{
+  "name": "db-utils",
+  "version": "1.0.0",
+  "description": "A module to connect to different databases.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GBNREDDY/db-utils"
+  },
+  "author": "gbnreddy",
+  "license": "ISC"
+}
